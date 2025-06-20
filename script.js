@@ -47,7 +47,22 @@ function playRound(humanChoice, computerChoice){
         humanScore++;
         console.log(`You won! Scissors beats Paper`);
     }
-    console.log(`Score of this round is: You = ${humanScore} and Computer = ${computerScore}`);
 }
 
-playRound(getHumanChoice(), getComputerChoice());
+function playGame(){
+    for (let i=1; i<=5; i++){
+        playRound(getHumanChoice(), getComputerChoice());
+    }
+    console.log(`Score of this game is: You = ${humanScore} and Computer = ${computerScore}`);
+    if (humanScore>computerScore){
+        console.log("YOU WON this game!");
+    }
+    else if (humanScore<computerScore){
+        console.log("COMPUTER WON this game!1");
+    }
+    else {
+        console.log("This is a tie!");
+    }
+}
+
+playGame();

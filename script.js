@@ -14,3 +14,6 @@ function getComputerChoice(){
 function getHumanChoice(){
     return prompt("Enter your choice: ");
 }
+
+let humanScore = 0;
+let computerScore = 0;

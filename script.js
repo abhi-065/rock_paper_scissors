@@ -48,21 +48,3 @@ function playRound(humanChoice, computerChoice){
         console.log(`You won! Scissors beats Paper`);
     }
 }
-
-function playGame(){
-    for (let i=1; i<=5; i++){
-        playRound(getHumanChoice(), getComputerChoice());
-    }
-    console.log(`Score of this game is: You = ${humanScore} and Computer = ${computerScore}`);
-    if (humanScore>computerScore){
-        console.log("YOU WON this game!");
-    }
-    else if (humanScore<computerScore){
-        console.log("COMPUTER WON this game!");
-    }
-    else {
-        console.log("This is a tie!");
-    }
-}
-
-playGame();

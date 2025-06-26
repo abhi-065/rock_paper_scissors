@@ -11,15 +11,10 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice(){
-    return prompt("Enter your choice: ");
-}
-
 let humanScore = 0;
 let computerScore = 0;
 
 function playRound(humanChoice, computerChoice){
-    humanChoice = humanChoice.toLowerCase();
     if (humanChoice===computerChoice){
         console.log(`This is a tie! You both chose ${humanChoice}`);
     }
@@ -48,3 +43,11 @@ function playRound(humanChoice, computerChoice){
         console.log(`You won! Scissors beats Paper`);
     }
 }
+
+const rock = document.querySelector(".rock");
+const paper = document.querySelector(".paper");
+const scissors = document.querySelector(".scissors");
+
+rock.addEventListener("click", () => playRound("rock", getComputerChoice()));
+paper.addEventListener("click", () => playRound("paper", getComputerChoice()));
+scissors.addEventListener("click", () => playRound("scissors", getComputerChoice()));

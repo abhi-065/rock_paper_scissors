@@ -1,3 +1,5 @@
+const body = document.querySelector("body");
+
 function getComputerChoice(){
     let n = Math.random();
     if (n>=0 && n<0.33){
@@ -29,7 +31,13 @@ function incrementComputerScore(){
 }
 
 const results = document.querySelector(".results");
+
 const score = document.querySelector(".score");
+
+const winnerSection = document.createElement("div");
+body.appendChild(winnerSection);
+
+const announcementOfWinner = document.createElement("p");
 
 function updateScoreDisplay(){
     score.textContent = `Player Score: ${humanScore} and Computer Score: ${computerScore}`;
@@ -41,6 +49,7 @@ results.addEventListener('incrementComputerScore', updateScoreDisplay);
 function playRound(humanChoice, computerChoice){
     if (humanChoice===computerChoice){
         results.textContent = `This is a tie! You both chose ${humanChoice}`;
+        updateScoreDisplay();
     }
     else if (humanChoice==="rock" && computerChoice==="paper"){
         computerScore++;
@@ -71,6 +80,23 @@ function playRound(humanChoice, computerChoice){
         humanScore++;
         incrementHumanScore();
         results.textContent = `You won! Scissors beats Paper`;
+    }
+    if (humanScore===5 || computerScore===5){
+        if (humanScore===5){
+            announcementOfWinner.textContent = "Player Won this round!\n New round begins NOW!";
+        }
+        else if (computerScore===5){
+            announcementOfWinner.textContent = "Computer Won this round!\n New round begins NOW!";
+        }
+        winnerSection.appendChild(announcementOfWinner);
+        const replayBtn = document.createElement("button");
+        replayBtn.textContent = "Play another round";
+        winnerSection.appendChild(replayBtn);
+        replayBtn.addEventListener("click", function (){
+            humanScore = 0;
+            computerScore = 0;
+            announcementOfWinner.textContent = "";
+        });
     }
 }
 
